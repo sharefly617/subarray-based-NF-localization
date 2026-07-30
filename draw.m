@@ -1,4 +1,5 @@
 %% Select a release MAT result
+clc;clear all;close all;
 releaseRoot = fileparts(mfilename('fullpath'));
 resultFile = fullfile(releaseRoot, 'results', 'fig6_release_results.mat');
 
@@ -25,7 +26,7 @@ figure('Color', 'w');
 semilogy(SNRdB, rmse(1,:), '-o', 'LineWidth', 1.5);
 hold on;
 semilogy(SNRdB, rmse(2,:), '-s', 'LineWidth', 1.5);
-semilogy(SNRdB, rmse(3,:), '-^', 'LineWidth', 1.5);
+semilogy(SNRdB, rmse(3,:), '--^k', 'LineWidth', 1.5);
 grid on;
 xlabel('SNR (dB)');
 ylabel('RMSE (m)');
@@ -35,21 +36,21 @@ title('Fig. 6 reproduction');
 %     fullfile(releaseRoot, 'results', 'fig6_release.png'), ...
 %     'Resolution', 200);
 
-%% APLE initial position error
-initialRMSE = results.meanApleInitialRMSE;
+% %% APLE initial position error
+% initialRMSE = results.meanApleInitialRMSE;
 
-figure('Color', 'w');
-semilogy(SNRdB, initialRMSE, '-o', 'LineWidth', 1.5);
-grid on;
-xlabel('SNR (dB)');
-ylabel('APLE initial RMSE (m)');
-title('APLE initial-position error');
-% exportgraphics(gcf, ...
-%     fullfile(releaseRoot, 'results', 'aple_initial_error.png'), ...
-%     'Resolution', 200);
+% figure('Color', 'w');
+% semilogy(SNRdB, initialRMSE, '-o', 'LineWidth', 1.5);
+% grid on;
+% xlabel('SNR (dB)');
+% ylabel('APLE initial RMSE (m)');
+% title('APLE initial-position error');
+% % exportgraphics(gcf, ...
+% %     fullfile(releaseRoot, 'results', 'aple_initial_error.png'), ...
+% %     'Resolution', 200);
 
-%% Per-trial trajectory note
-% The compact runner intentionally omits per-trial histories. Run a separate
-% diagnostic experiment if an objective or parameter trajectory is needed.
-fprintf(['No single-trial objective/parameter trajectory is available in ', ...
-    'this summary-only MAT file.\n']);
+% %% Per-trial trajectory note
+% % The compact runner intentionally omits per-trial histories. Run a separate
+% % diagnostic experiment if an objective or parameter trajectory is needed.
+% fprintf(['No single-trial objective/parameter trajectory is available in ', ...
+%     'this summary-only MAT file.\n']);

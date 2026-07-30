@@ -2,19 +2,21 @@
 % Edit this block to change the experiment. All functions are resolved from
 % this release; the original code/ directory is never called.
 clc; close all;
-MC = 6;
+MC = 60*20;
 if exist('RELEASE_SMOKE_MC', 'var')
     MC = RELEASE_SMOKE_MC;
 end
-randomSeed = randi(1);
+randomSeed = 12345;
 SNRdB = 0:5:30;
 fHz = 28e9;
 lambda = 299792458/fHz;
 Nx = 150; Ny = 150; d = lambda/2; sigma2 = 1;
-rRange = [30 35]; omegaRange = [0 2*pi]; phiRange = [0 pi/2];
+rRange = [30 35]; 
+omegaRange = [0.1 2*pi]; 
+phiRange = [0.1, pi/2];
 T2 = 50; GAIterations = 500;
 useParallel = true;
-numWorkers = 6;
+numWorkers = 60;
 outputName = 'fig6_release_results.mat';
 
 %% Release paths and experiment initialization
@@ -51,7 +53,14 @@ if useParallel
         if isempty(numWorkers)
             parpool('local');
         else
-            parpool('local', numWorkers);
+            localCluster = parcluster('local');
+            activeWorkers = min(numWorkers, localCluster.NumWorkers);
+            if activeWorkers < numWorkers
+                warning('RMSEvsSNR:WorkerCap', ...
+                    'Requested %d workers; local profile permits %d.', ...
+                    numWorkers, activeWorkers);
+            end
+            parpool('local', activeWorkers);
         end
     end
     parfor t = 1:MC
@@ -99,7 +108,9 @@ rmse = [ ...
 
 %% Save and display the result
 trueP = reshape(truePosition, MC, 1, 1, 3);
-initialError = sqrt(sum((apInitial - trueP).^2, 3));
+apInitial4 = reshape(apInitial, MC, S, 1, 3);
+% The coordinate dimension is the fourth dimension after explicit reshaping.
+initialError = sqrt(sum((apInitial4 - trueP).^2, 4));
 meanApleInitialRMSE = squeeze(sqrt(mean(initialError.^2, 1, 'omitnan'))).';
 meanSquaredError = squeeze(mean(squaredError, 1, 'omitnan'));
 successRate = squeeze(mean(success, 1, 'omitnan')).';
