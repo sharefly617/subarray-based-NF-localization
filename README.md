@@ -10,8 +10,12 @@ where practical, and comments at the experiment and optimization boundaries.
 Formatting changes are limited to whitespace, line breaks, and explanatory
 comments; numerical formulas and control flow are unchanged.
 
-This is a reproduction of *Scalable near-field localization based on
-partitioned large-scale antenna array*. If you use this code, please cite:
+This is a reproduction of 
+```text
+Scalable near-field localization based on
+partitioned large-scale antenna array
+```
+ If you use this code, please cite:
 
 M. Cheng, R. Wang, W. Peng and G. Zheng, “Precoding with Linear-Scaling
 Complexity in Massive MIMO DFRC Systems,” *IEEE Transactions on Vehicular
@@ -59,6 +63,11 @@ overwritten: MATLAB prints a warning before replacing the selected name.
 The default runner uses `parfor` over trials with `numWorkers = 6`. Set
 `useParallel = false` for serial debugging, or change `numWorkers` in the
 parameter block.
+
+The MAT output is summary-only: it stores configuration, three RMSE curves,
+APLE initial RMSE, mean squared errors, success rates, and CRB valid/failed
+counts. Per-trial observations, estimates, and optimization histories are not
+saved, keeping result files small.
 
 For a quick smoke test, set `RELEASE_SMOKE_MC=1` in the workspace and run
 `RMSEvsSNR`; the script then uses one trial without changing its normal

@@ -36,10 +36,7 @@ title('Fig. 6 reproduction');
 %     'Resolution', 200);
 
 %% APLE initial position error
-trueP = reshape(results.truePosition, size(results.truePosition, 1), 1, 1, 3);
-initialError = sqrt(sum( ...
-    (results.apleInitialPosition - trueP).^2, 4));
-initialRMSE = squeeze(sqrt(mean(initialError.^2, 1)));
+initialRMSE = results.meanApleInitialRMSE;
 
 figure('Color', 'w');
 semilogy(SNRdB, initialRMSE, '-o', 'LineWidth', 1.5);
@@ -51,36 +48,8 @@ title('APLE initial-position error');
 %     fullfile(releaseRoot, 'results', 'aple_initial_error.png'), ...
 %     'Resolution', 200);
 
-%% One-trial objective and parameter trajectory
-trial = 1;
-snrIndex = 1;
-methodIndex = 2;
-diag = results.optimizationDiagnostics{trial, snrIndex, methodIndex};
-
-if isfield(diag, 'objectiveHistory')
-    figure('Color', 'w');
-    iterations = 0:numel(diag.objectiveHistory)-1;
-    plot(iterations, diag.objectiveHistory, '-o');
-    grid on;
-    xlabel('Iteration');
-    ylabel('Profile objective');
-    title(sprintf( ...
-        '%s objective, trial %d, %g dB', ...
-        results.config.methods{methodIndex}, trial, SNRdB(snrIndex)));
-    % exportgraphics(gcf, ...
-    %     fullfile(releaseRoot, 'results', 'single_trial_objective.png'), ...
-    %     'Resolution', 200);
-end
-
-if isfield(diag, 'parameterHistory')
-    figure('Color', 'w');
-    plot(diag.parameterHistory.');
-    grid on;
-    xlabel('Iteration');
-    ylabel('Parameter value');
-    legend('r (m)', 'omega (rad)', 'phi (rad)', 'Location', 'best');
-    title('Single-trial parameter trajectory');
-    % exportgraphics(gcf, ...
-    %     fullfile(releaseRoot, 'results', 'single_trial_parameters.png'), ...
-    %     'Resolution', 200);
-end
+%% Per-trial trajectory note
+% The compact runner intentionally omits per-trial histories. Run a separate
+% diagnostic experiment if an objective or parameter trajectory is needed.
+fprintf(['No single-trial objective/parameter trajectory is available in ', ...
+    'this summary-only MAT file.\n']);
