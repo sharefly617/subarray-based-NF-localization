@@ -11,7 +11,7 @@ SNRdB = 0:5:30;
 fHz = 28e9;
 lambda = 299792458/fHz;
 Nx = 150; Ny = 150; d = lambda/2; sigma2 = 1;
-rRange = [10 45]; 
+rRange = [30 45]; 
 omegaRange = [0.1 2*pi]; 
 phiRange = [0.1, pi/2];
 T2 = 50; GAIterations = 50;
