@@ -8,7 +8,7 @@ This is a reproduction of
 
 </span>
 
-![这是图片](./results/fig6_release.png)
+![fig 6](./results/fig6_release.png "Paper Fig6")
  If you use this code, please cite:
 M. Cheng, R. Wang, W. Peng and G. Zheng, “Precoding with Linear-Scaling
 Complexity in Massive MIMO DFRC Systems,” *IEEE Transactions on Vehicular
