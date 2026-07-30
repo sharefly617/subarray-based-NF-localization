@@ -1,18 +1,10 @@
 # APLE / E-APLE algorithm for Near-field localization
-
-<span style="font-size: 42px; display: block;">
-
-This is a reproduction of  
-`Scalable near-field localization based on partitioned large-scale antenna array`  
- APLE / E-APLE algorithms.
-
-</span>
-
-![fig 6](./results/fig6_release.png "Paper Fig6")
- If you use this code, please cite:
+ ==This is not my paper, but if you think this helps you please cite my paper== 
+ ```
 M. Cheng, R. Wang, W. Peng and G. Zheng, “Precoding with Linear-Scaling
 Complexity in Massive MIMO DFRC Systems,” *IEEE Transactions on Vehicular
 Technology*, doi: [10.1109/TVT.2026.3693709](https://doi.org/10.1109/TVT.2026.3693709).
+```
 
 ```bibtex
 @ARTICLE{cheng2026,
@@ -26,6 +18,13 @@ Technology*, doi: [10.1109/TVT.2026.3693709](https://doi.org/10.1109/TVT.2026.36
   doi={10.1109/TVT.2026.3693709}
 }
 ```
+
+This is a reproduction of  
+`Scalable near-field localization based on partitioned large-scale antenna array`  
+ APLE / E-APLE algorithms.
+
+
+![fig 6](./results/fig6_release.png "Paper Fig6")
 
 ## Layout
 
