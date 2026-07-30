@@ -12,8 +12,7 @@ comments; numerical formulas and control flow are unchanged.
 
 This is a reproduction of 
 ```text
-Scalable near-field localization based on
-partitioned large-scale antenna array
+Scalable near-field localization based on partitioned large-scale antenna array
 ```
  If you use this code, please cite:
 
