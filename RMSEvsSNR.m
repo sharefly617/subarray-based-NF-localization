@@ -2,7 +2,7 @@
 % Edit this block to change the experiment. All functions are resolved from
 % this release; the original code/ directory is never called.
 clc; close all;
-MC = 60*20;
+MC = 6*2;
 if exist('RELEASE_SMOKE_MC', 'var')
     MC = RELEASE_SMOKE_MC;
 end

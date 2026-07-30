@@ -1,21 +1,13 @@
-# Standalone APLE / E-APLE release
+# APLE / E-APLE algorithm for Near-field localization
+<span style="font-size: 42px; display: block;">
 
-This directory is a standalone copy of the validated algorithms. It does not
-call the original `code/` directory. The exact near-field observation model,
-APLE VM/geometric messages, E-APLE profile-ML BCA, GA Ini: APLE gradient
-ascent, and five-parameter near-field CRB are unchanged.
+This is a reproduction of  
+`Scalable near-field localization based on partitioned large-scale antenna array`  
+ APLE / E-APLE algorithms.
 
-All MATLAB files in this release use expanded blocks, one statement per line
-where practical, and comments at the experiment and optimization boundaries.
-Formatting changes are limited to whitespace, line breaks, and explanatory
-comments; numerical formulas and control flow are unchanged.
+</span>
 
-This is a reproduction of 
-```text
-Scalable near-field localization based on partitioned large-scale antenna array
-```
  If you use this code, please cite:
-
 M. Cheng, R. Wang, W. Peng and G. Zheng, “Precoding with Linear-Scaling
 Complexity in Massive MIMO DFRC Systems,” *IEEE Transactions on Vehicular
 Technology*, doi: [10.1109/TVT.2026.3693709](https://doi.org/10.1109/TVT.2026.3693709).
